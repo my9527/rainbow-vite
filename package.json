@@ -20,7 +20,9 @@
     "graphql-request": "^6.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
     "recoil": "^0.7.7",
+    "styled-components": "^6.1.8",
     "viem": "^2.9.6",
     "wagmi": "^2.5.17"
   },

@@ -8,7 +8,7 @@ import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import { base, baseSepolia } from './config/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import Router from "./router";
 const config = getDefaultConfig({
   appName: 'RainbowKit demo',
   projectId: 'YOUR_PROJECT_ID',
@@ -25,7 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-          <App />
+          <Router />
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
