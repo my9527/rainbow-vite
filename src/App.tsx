@@ -1,4 +1,5 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+// import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { CustomConnectButton } from "./components/CutomConnectButton";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
         padding: 12,
       }}
     >
-      <ConnectButton />
+      <CustomConnectButton />
     </div>
   );
 }

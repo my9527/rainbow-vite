@@ -12,8 +12,15 @@
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.0.4",
     "@tanstack/react-query": "^5.28.9",
+    "ahooks": "^3.7.11",
+    "axios": "^1.6.8",
+    "bignumber.js": "^9.1.2",
+    "ethers": "^5.7.2",
+    "graphql": "^16.8.1",
+    "graphql-request": "^6.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "recoil": "^0.7.7",
     "viem": "^2.9.6",
     "wagmi": "^2.5.17"
   },

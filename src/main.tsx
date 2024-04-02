@@ -6,13 +6,16 @@ import App from './App';
 
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
-import { arbitrum, base, mainnet, optimism, polygon } from 'wagmi/chains';
+import { base, baseSepolia } from './config/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const config = getDefaultConfig({
   appName: 'RainbowKit demo',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, polygon, optimism, arbitrum, base],
+  chains: [
+    base,
+    baseSepolia,
+  ],
 });
 
 const queryClient = new QueryClient();
