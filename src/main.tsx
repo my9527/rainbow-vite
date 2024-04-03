@@ -2,8 +2,7 @@ import "./polyfills";
 import "@rainbow-me/rainbowkit/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-
+import { Suspense } from "react";
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
 import { base, baseSepolia, bsc } from "./config/chains";
@@ -24,7 +23,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-          <Router />
+          <Suspense>
+            <Router />
+          </Suspense>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

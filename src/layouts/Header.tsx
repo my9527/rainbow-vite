@@ -4,6 +4,7 @@ import LogoIcon from "@/assets/header/logo.svg";
 import Dot from "@/assets/header/dot.svg";
 import SwitchChain from "./SwitchChain";
 import Social from "./Social";
+import { useNavigate } from "react-router-dom";
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -22,6 +23,7 @@ const Left = styled.div`
     height: 42px;
     flex-shrink: 0;
     margin-right: 12px;
+    cursor: pointer;
   }
   .name {
     color: #000;
@@ -44,10 +46,16 @@ const Right = styled.div`
 `;
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <Left>
-        <img src={LogoIcon} className="logo" alt="" />
+        <img
+          src={LogoIcon}
+          className="logo"
+          alt=""
+          onClick={() => navigate("/")}
+        />
         <p className="name">ERC50Launch</p>
         <img src={Dot} className="dot" alt="" />
       </Left>
