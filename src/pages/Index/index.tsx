@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import DiamondIcon from "@/assets/index/diamond.gif";
 
@@ -8,6 +7,7 @@ const Wrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 const Content = styled.div`
   display: flex;
@@ -29,8 +29,8 @@ const ProjectScrollWrapper = styled.div`
   background: #c8ea8e;
   width: 100%;
   overflow: hidden;
-  position: relative;
-  height: 100px;
+
+  /* height: 100px; */
   display: flex;
   align-items: center;
   gap: 20px;
@@ -47,6 +47,7 @@ const ProjectItem = styled.div<{ per: number }>`
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
   .circle {
     width: 40px;
     height: 40px;
@@ -111,19 +112,25 @@ const ProjectItem = styled.div<{ per: number }>`
       right: -50px;
       top: -27px;
     }
+  }
+  .tips {
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 13px;
+    color: #021b02;
+    font-family: Handjet;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    position: absolute;
+    left: 51px;
+    top: -118px;
+    opacity: 0;
+  }
+  &:hover {
     .tips {
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 13px;
-      color: #021b02;
-      font-family: Handjet;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 120%;
-      position: absolute;
-      left: 51px;
-      top: 0;
+      opacity: 1;
     }
   }
 `;
@@ -134,6 +141,7 @@ const Index = () => {
     { per: 99, name: "dino3" },
     { per: 100, name: "dino4" },
   ];
+
   let timer: NodeJS.Timeout | number;
   const scrollFun = () => {
     const wrapper = document.getElementById("wrapper") as HTMLElement;
@@ -148,11 +156,12 @@ const Index = () => {
     }
   };
   useEffect(() => {
-    // timer = setInterval(scrollFun, 50);
+    timer = setInterval(scrollFun, 50);
     return () => {
       clearInterval(timer);
     };
   }, [list.length]);
+
   return (
     <Wrapper>
       <Content>
@@ -163,18 +172,13 @@ const Index = () => {
         id="wrapper"
         onMouseOver={() => clearInterval(timer)}
         onMouseOut={() => {
-          // timer = setInterval(scrollFun, 50);
+          timer = setInterval(scrollFun, 50);
         }}
       >
         <Projects id="projects">
           {list.map((item) => {
             return (
-              <ProjectItem
-                per={item.per}
-                onMouseOver={() => {
-                  console.log("hover-item", item);
-                }}
-              >
+              <ProjectItem per={item.per}>
                 <div className="circle"></div>
                 <div className="progress">
                   <p className="name">{item.name}</p>
