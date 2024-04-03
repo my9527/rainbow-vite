@@ -40,7 +40,7 @@ const Projects = styled.div`
   padding: 30px;
   display: flex;
   align-items: center;
- gap:52px;
+  gap: 52px;
 `;
 
 const ProjectItem = styled.div<{ per: number }>`
@@ -111,6 +111,20 @@ const ProjectItem = styled.div<{ per: number }>`
       right: -50px;
       top: -27px;
     }
+    .tips {
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 13px;
+      color: #021b02;
+      font-family: Handjet;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 120%;
+      position: absolute;
+      left: 51px;
+      top: 0;
+    }
   }
 `;
 const Index = () => {
@@ -134,7 +148,7 @@ const Index = () => {
     }
   };
   useEffect(() => {
-    timer = setInterval(scrollFun, 50);
+    // timer = setInterval(scrollFun, 50);
     return () => {
       clearInterval(timer);
     };
@@ -149,15 +163,18 @@ const Index = () => {
         id="wrapper"
         onMouseOver={() => clearInterval(timer)}
         onMouseOut={() => {
-          timer = setInterval(scrollFun, 50);
+          // timer = setInterval(scrollFun, 50);
         }}
       >
         <Projects id="projects">
           {list.map((item) => {
             return (
-              <ProjectItem per={item.per}  onMouseOver={() => {
-                console.log('hover-item',item)
-              }}>
+              <ProjectItem
+                per={item.per}
+                onMouseOver={() => {
+                  console.log("hover-item", item);
+                }}
+              >
                 <div className="circle"></div>
                 <div className="progress">
                   <p className="name">{item.name}</p>
@@ -166,6 +183,12 @@ const Index = () => {
                   {item.per === 100 && (
                     <img src={DiamondIcon} className="diamond" alt="" />
                   )}
+                </div>
+                <div className="tips">
+                  <p>
+                    Token address: 0x85E90a5430AF45776548ADB82eE4cD9E33B08077
+                  </p>
+                  <p> Minting progress: 10,000,000,000 / 10,000,000,000</p>
                 </div>
               </ProjectItem>
             );
