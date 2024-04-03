@@ -35,10 +35,18 @@ const Item = styled.div`
 const Social = () => {
   return (
     <Wrapper>
-      <Item>
+      <Item
+        onClick={() => {
+          window.open("https://twitter.com/ERC_50", "_bank");
+        }}
+      >
         <img src={TwitterIcon} alt="" />
       </Item>
-      <Item>
+      <Item
+        onClick={() => {
+          window.open("https://t.me/ERC_50/", "_bank");
+        }}
+      >
         <img src={TelegramIcon} alt="" />
       </Item>
     </Wrapper>
