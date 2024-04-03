@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import DiamondIcon from "@/assets/index/diamond.gif";
+import BigDinoGif from "../../components/BigDinoGif";
+import { Header } from "./Header";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -15,12 +17,7 @@ const Content = styled.div`
 `;
 const Left = styled.div`
   flex: 1;
-`;
-const Right = styled.div`
-  width: 300px;
-  height: 100%;
-  flex-shrink: 0;
-  background: #fff;
+  border-right: 3px solid #057003;
 `;
 
 const ProjectScrollWrapper = styled.div`
@@ -165,8 +162,10 @@ const Index = () => {
   return (
     <Wrapper>
       <Content>
-        <Left></Left>
-        <Right></Right>
+        <Left>
+          <Header />
+        </Left>
+        <BigDinoGif />
       </Content>
       <ProjectScrollWrapper
         id="wrapper"
