@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Handjet";
+  src: url("/Handjet.ttf") format("truetype");
+}
+
 :root {
   body {
     margin: 0 !important;
