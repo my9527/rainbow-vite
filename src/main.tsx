@@ -9,6 +9,8 @@ import { WagmiProvider } from 'wagmi';
 import { base, baseSepolia } from './config/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Router from "./router";
+import "./index.css";
+
 const config = getDefaultConfig({
   appName: 'RainbowKit demo',
   projectId: 'YOUR_PROJECT_ID',
