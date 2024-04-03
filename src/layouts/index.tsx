@@ -24,6 +24,7 @@ const MainContent = styled.div`
   height: 900px;
   position: relative;
   box-sizing: border-box;
+
   .bg {
     width: 1450px;
     height: 100%;
@@ -34,6 +35,7 @@ const MainContent = styled.div`
     z-index: 2;
   }
   .content {
+    background-color: #fff;
     position: relative;
     z-index: 3;
     width: 100%;
