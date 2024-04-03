@@ -52,7 +52,7 @@ const Header = () => {
         <img src={Dot} className="dot" alt="" />
       </Left>
       <Right>
-        <SwitchChain />
+        {/* <SwitchChain /> */}
         <CustomConnectButton />
         <Social />
       </Right>

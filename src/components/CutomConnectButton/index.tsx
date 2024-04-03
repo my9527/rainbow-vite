@@ -1,8 +1,8 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Button from "../Button";
 import styled from "styled-components";
-import MetamaskIcon from "@/assets/wallet/metamask.svg";
-import OkxIcon from "@/assets/wallet/okx.svg";
+import SwitchImage from "@/assets/switch/switch.svg";
+import ErrorIcon from "@/assets/layout/error.svg";
 
 const StyledBtn = styled(Button)`
   width: 110px;
@@ -16,24 +16,31 @@ const StyledBtn = styled(Button)`
       color: #fff;
     }
   }
-  & > div {
-    height: 30px;
-    display: flex;
-    align-items: center;
-    button {
-      background: none;
-      border: none;
-      color: #000;
-      font-family: Arial;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 100%;
-      padding: 0;
-    }
+  color: #000;
+  font-family: Arial;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+`;
+const CurChain = styled.div`
+  width: 47px;
+  height: 46px;
+  cursor: pointer;
+  margin-right: 20px;
+  background-image: url(${SwitchImage});
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 50%;
   }
 `;
-
 const ConnectWalletWrapper = styled.div`
   position: absolute;
   top: 46px;
@@ -95,115 +102,69 @@ const ConnectWallet = styled.div`
  * @returns
  */
 export const CustomConnectButton = () => {
-  const wallets = [
-    {
-      label: "Metamask",
-      key: "metamask",
-      icon: MetamaskIcon,
-    },
-    {
-      label: "OKX Wallet",
-      key: "okx",
-      icon: OkxIcon,
-    },
-  ];
   return (
-    <StyledBtn>
-      <ConnectButton.Custom>
-        {({
-          account,
-          chain,
-          openAccountModal,
-          openChainModal,
-          openConnectModal,
-          // authenticationStatus,
-          mounted,
-        }) => {
-          // Note: If your app doesn't use authentication, you
-          // can remove all 'authenticationStatus' checks
-          const ready = mounted;
-          const connected = ready && account && chain;
-          console.log("chain", chain);
-          return (
-            <div
-              {...(!ready && {
-                "aria-hidden": true,
-                style: {
-                  opacity: 0,
-                  pointerEvents: "none",
-                  userSelect: "none",
-                },
-              })}
-            >
-              {(() => {
-                if (!connected) {
-                  return (
-                    <button onClick={openConnectModal} type="button">
-                      Connect Wallet
-                    </button>
-                  );
-                }
-                if (chain.unsupported) {
-                  return (
-                    <button onClick={openChainModal} type="button">
-                      Wrong network
-                    </button>
-                  );
-                }
-                // return (
-                //   <ConnectWallet>
-                //     {wallets.map((item) => {
-                //       return (
-                //         <div className="item" key={item?.key}>
-                //           <img src={item?.icon} alt="" />
-                //           <p className="label">{item?.label}</p>
-                //         </div>
-                //       );
-                //     })}
-                //   </ConnectWallet>
-                // );
+    <ConnectButton.Custom>
+      {({
+        account,
+        chain,
+        openAccountModal,
+        openChainModal,
+        openConnectModal,
+        // authenticationStatus,
+        mounted,
+      }) => {
+        // Note: If your app doesn't use authentication, you
+        // can remove all 'authenticationStatus' checks
+        const ready = mounted;
+        const connected = ready && account && chain;
+
+        return (
+          <div
+            {...(!ready && {
+              "aria-hidden": true,
+              style: {
+                opacity: 0,
+                pointerEvents: "none",
+                userSelect: "none",
+              },
+            })}
+          >
+            {(() => {
+              if (!connected) {
                 return (
-                  <div style={{ display: "flex", gap: 6 }}>
-                    <button
-                      onClick={openChainModal}
-                      style={{ display: "flex", alignItems: "center" }}
-                      type="button"
-                    >
-                      {/* {chain.hasIcon && (
-                        <div
-                          style={{
-                            background: chain.iconBackground,
-                            width: 12,
-                            height: 12,
-                            borderRadius: 999,
-                            overflow: "hidden",
-                            marginRight: 4,
-                          }}
-                        >
-                          {chain.iconUrl && (
-                            <img
-                              alt={chain.name ?? "Chain icon"}
-                              src={chain.iconUrl}
-                              style={{ width: 12, height: 12 }}
-                            />
-                          )}
-                        </div>
-                      )} */}
-                      {chain.name}
-                    </button>
-                    <button onClick={openAccountModal} type="button">
-                      {account.displayName}
-                      {/* {account.displayBalance
-                        ? ` (${account.displayBalance})`
-                        : ""} */}
-                    </button>
-                  </div>
+                  <StyledBtn onClick={openConnectModal}>
+                    Connect Wallet
+                  </StyledBtn>
                 );
-              })()}
-            </div>
-          );
-        }}
-      </ConnectButton.Custom>
-    </StyledBtn>
+              }
+              if (chain.unsupported) {
+                return (
+                  <CurChain onClick={openChainModal}>
+                    <img alt={"Wrong network"} src={ErrorIcon} />
+                  </CurChain>
+                );
+              }
+
+              return (
+                <div style={{ display: "flex", gap: 6 }}>
+                  <CurChain onClick={openChainModal}>
+                    {chain.hasIcon && (
+                      <img
+                        alt={chain.name ?? "Chain icon"}
+                        src={chain.iconUrl}
+                      />
+                    )}
+                  </CurChain>
+
+                  <StyledBtn onClick={openAccountModal}>
+                    {account.displayName}
+                  </StyledBtn>
+                </div>
+              );
+            })()}
+          </div>
+        );
+      }}
+    </ConnectButton.Custom>
   );
 };
