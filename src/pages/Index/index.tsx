@@ -3,7 +3,7 @@ import styled from "styled-components";
 import DiamondIcon from "@/assets/index/diamond.gif";
 import BigDinoGif from "../../components/BigDinoGif";
 import { Header } from "./Header";
-
+import Overview from "./Overview";
 const Wrapper = styled.div`
   width: 100%;
   flex: 1;
@@ -19,7 +19,9 @@ const Left = styled.div`
   flex: 1;
   border-right: 3px solid #057003;
 `;
-
+const StyledBigDinoGif = styled(BigDinoGif)`
+  height: auto;
+`;
 const ProjectScrollWrapper = styled.div`
   cursor: pointer;
   border-top: 3px solid #057003;
@@ -164,8 +166,9 @@ const Index = () => {
       <Content>
         <Left>
           <Header />
+          <Overview />
         </Left>
-        <BigDinoGif />
+        <StyledBigDinoGif />
       </Content>
       <ProjectScrollWrapper
         id="wrapper"

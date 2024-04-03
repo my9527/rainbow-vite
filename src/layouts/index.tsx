@@ -21,7 +21,6 @@ const MainContent = styled.div`
   width: 1450px;
   border: 3px solid #057003;
   margin: auto;
-  height: 900px;
   position: relative;
   box-sizing: border-box;
 
