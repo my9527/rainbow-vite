@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20px;
   .text {
     color: #021b02;
     font-family: Arial;
@@ -26,6 +27,10 @@ const Wrapper = styled.div`
   &:active {
     color: #fff;
     background-image: url(${ActiveBgIcon});
+
+    svg path {
+      fill: #fff;
+    }
   }
 `;
 const Button: React.FC<{

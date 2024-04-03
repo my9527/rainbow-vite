@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 const Left = styled.div`
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #057003;
+  border-right: 3px solid #057003;
   flex-grow: 1;
   flex-direction: column;
 `
